@@ -32,6 +32,21 @@ namespace BinTree
             }
         }
         
+        private BinaryTree<T> _search(BinaryTree<T> tree, T val)
+        {
+            if(tree == null) return null;
+            switch (val.CompareTo(tree.val)){
+                case 1: return _search(tree.right, val);
+                case -1: return _search(tree.left, val);
+                case 0: return tree;
+                default: return null;
+            }
+        }
+    
+        public BinaryTree<T> search(T val)
+        {
+            return _search(this, val);
+        }
         
     }
 }

@@ -46,5 +46,23 @@ namespace BinTree.TestBinary
             Assert.AreEqual(35, tree.right.val);
         }
         
+        [Test]
+        public void SearchValueIntoBinTree()
+        {
+            BinaryTree<int> tree = new BinaryTree<int>(33, null);
+            tree.add(5);
+            tree.add(35);
+            tree.add(1);
+            tree.add(20);
+            tree.add(99);
+            tree.add(17);
+            tree.add(18);
+            tree.add(19);
+            tree.add(31);
+            tree.add(4);
+            Assert.AreEqual(18, tree.search(18).val);
+            Assert.AreEqual(null, tree.search(40));
+        }
+        
     }
 }
