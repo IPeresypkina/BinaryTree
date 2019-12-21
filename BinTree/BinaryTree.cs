@@ -13,5 +13,25 @@ namespace BinTree
             this.val = val;
             this.parent = parent;
         }
+        
+        public void add(T val)
+        {
+            if(val.CompareTo(this.val) < 0){
+                if(this.left==null){
+                    this.left = new BinaryTree<T>(val, this);
+                }
+                else if(this.left != null)
+                    this.left.add(val);
+            }
+            else{
+                if(this.right==null){
+                    this.right = new BinaryTree<T>(val, this);
+                }
+                else if(this.right != null)
+                    this.right.add(val);
+            }
+        }
+        
+        
     }
 }
