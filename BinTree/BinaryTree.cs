@@ -105,22 +105,20 @@ namespace BinTree
             }
       
               //Удаляем узел, имеющий поддеревья с обеих сторон
-            if(tree.right!=null && tree.left!=null) {
-                curTree = tree.right;
+            curTree = tree.right;
+            while (curTree.left != null) { 
+                curTree = curTree.left;
+            }
       
-                while (curTree.left != null) {
-                    curTree = curTree.left;
-                }
-      
-                //Если самый левый элемент является первым потомком
-                if(curTree.parent == tree) {
+            //Если самый левый элемент является первым потомком
+            if(curTree.parent == tree) {
                     curTree.left = tree.left;
                     tree.left.parent = curTree;
                     curTree.parent = tree.parent;
                     tree.parent.left = curTree;
-                }
+            }
                 //Если самый левый элемент НЕ является первым потомком
-                else {
+            else {
                     if (curTree.right != null) {
                         curTree.right.parent = curTree.parent;
                     }
@@ -131,10 +129,8 @@ namespace BinTree
                     tree.right.parent = curTree;
                     curTree.parent = tree.parent;
                     tree.parent.right = curTree;
-                }
-                return true;
             }
-            return false;
+            return true;
         }
     }
 }
